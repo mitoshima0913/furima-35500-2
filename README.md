@@ -2,34 +2,34 @@
 
 ## users table
 
-| Column             | Type                | Options                 |
-|--------------------|---------------------|-------------------------|
-| nickname           | string              | null: false             |
-| email              | string              | null: false             |
-| password           | string              | null: false             |
-| nickname           | string              | null: false             |
-| last_name          | string              | null: false             |
-| first_name         | string              | null: false             |
-| last_furigana      | string              | null: false             |
-| first_furigana     | string              | null: false             |
-| birthday           | datetime            | null: false             |
+| Column             | Type                | Options                    |
+|--------------------|---------------------|----------------------------|
+| nickname           | string              | null: false                |
+| email              | string              | null: false, unique: true  |
+| password           | string              | null: false                |
+| nickname           | string              | null: false                |
+| last_name          | string              | null: false                |
+| first_name         | string              | null: false                |
+| last_furigana      | string              | null: false                |
+| first_furigana     | string              | null: false                |
+| birthday           | date                | null: false                |
 
 ### Association
 
-* has_many :items
+- has_many :items
+- has_many :purchases
 
 ## items table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| image                               | reference  | foreign_key: true |
 | name                                | string     | null: false       |
 | description                         | text       | null: false       |
-| category                            | string     | null: false       |
-| condition                           | string     | null: false       |
-| pay                                 | string     | null: false       |
-| district                            | string     | null: false       |
-| days                                | integer    | null: false       |
+| category_id                         | integer    | null: false       |
+| condition_id                        | integer    | null: false       |
+| pay_id                              | integer    | null: false       |
+| prefecture_id                       | integer    | null: false       |
+| days_id                             | integer    | null: false       |
 | price                               | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
@@ -38,7 +38,7 @@
 - belongs_to :user
 - has_one :purchase
 
-## purchasers table
+## purchases table
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
@@ -47,6 +47,7 @@
 
 ### Association
 
+- belongs_to :user
 - belongs_to :item
 - has_one :address
 
@@ -54,11 +55,11 @@
 
 | Column            | Type       | Options           |
 |-------------------|------------|-------------------|
-| zip_code          | integer    | null: false       |
-| prefecture        | string     | null: false       |
+| zip_code          | string     | null: false       |
+| prefecture_id     | integer    | null: false       |
 | municipalities    | string     | null: false       |
-| street_number     | integer    | null: false       |
-| phone_number      | integer    | null: false       |
+| street_number     | string     | null: false       |
+| phone_number      | string     | null: false       |
 | purchase          | references | foreign_key: true |
 
 ### Association
