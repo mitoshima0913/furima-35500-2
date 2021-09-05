@@ -6,8 +6,7 @@
 |--------------------|---------------------|----------------------------|
 | nickname           | string              | null: false                |
 | email              | string              | null: false, unique: true  |
-| password           | string              | null: false                |
-| nickname           | string              | null: false                |
+| encrypted_password | string              | null: false                |
 | last_name          | string              | null: false                |
 | first_name         | string              | null: false                |
 | last_furigana      | string              | null: false                |
@@ -29,7 +28,7 @@
 | condition_id                        | integer    | null: false       |
 | pay_id                              | integer    | null: false       |
 | prefecture_id                       | integer    | null: false       |
-| days_id                             | integer    | null: false       |
+| scheduled_day_id                    | integer    | null: false       |
 | price                               | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
@@ -59,6 +58,7 @@
 | prefecture_id     | integer    | null: false       |
 | municipalities    | string     | null: false       |
 | street_number     | string     | null: false       |
+| building          | string     | 
 | phone_number      | string     | null: false       |
 | purchase          | references | foreign_key: true |
 
